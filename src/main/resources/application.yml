@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/basicSB
+    url: jdbc:postgresql://localhost:5432/sb-pg
     username: admin
     password: 1234
-    name: basicSB
+    name: sb-pg
   jpa:
     hibernate:
       ddl-auto: none
