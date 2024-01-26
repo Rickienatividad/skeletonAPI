@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/basicSB
+    username: admin
+    password: 1234
+    name: basicSB
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database: postgresql
+  security:
+    user:
+      name: admin
+      password: p@$$w0rd
