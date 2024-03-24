@@ -40,7 +40,7 @@ public class UserController {
     return userService.createUser(createUserObj);
   }
 
-  @GetMapping("")
+  @GetMapping("/index")
   public List<AppUser> getUsers() {
     return userService.getUsers();
   }
