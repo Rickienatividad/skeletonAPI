@@ -99,4 +99,5 @@ public class UserServiceImpl implements UserService {
       throw new NotFoundException("User not found");
     }
   }
+
 }

@@ -6,7 +6,7 @@ spring:
     name: sb-pg
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     database: postgresql
   security:
     user:
