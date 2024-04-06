@@ -1,13 +1,23 @@
 package com.skeleton.skeleton.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "app_user", uniqueConstraints = { @UniqueConstraint(columnNames = { "username", "email" }) })
@@ -25,6 +35,10 @@ public class AppUser {
 
   @Column(name = "password", nullable = false)
   private String password;
+
+  @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinTable(name = "AppUserRoleMapper", joinColumns = @JoinColumn(name = "app_user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+  private Set<Role> roles = new HashSet<>();
 
   public AppUser() {
 
