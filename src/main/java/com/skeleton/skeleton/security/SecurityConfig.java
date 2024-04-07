@@ -1,6 +1,7 @@
 package com.skeleton.skeleton.security;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -20,12 +21,11 @@ public class SecurityConfig {
   public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
     httpSecurity.authorizeHttpRequests(registry -> {
       registry.requestMatchers("/users/index").hasRole("ADMIN");
-      registry.requestMatchers("/users/").permitAll();
-      registry.anyRequest().authenticated();
+      registry.requestMatchers(HttpMethod.POST, "/users").permitAll();
+      registry.anyRequest().permitAll();
     })
         .formLogin(formLogin -> formLogin.permitAll());
-
-    return httpSecurity.build();
+    return httpSecurity.csrf().disable().build();
   }
 
   @Bean
