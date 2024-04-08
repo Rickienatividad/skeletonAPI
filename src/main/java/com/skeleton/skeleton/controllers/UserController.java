@@ -9,7 +9,6 @@ import com.skeleton.skeleton.services.UserService;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 @RestController
-// @AutoConfiguration
 @RequestMapping("/users")
 public class UserController {
 

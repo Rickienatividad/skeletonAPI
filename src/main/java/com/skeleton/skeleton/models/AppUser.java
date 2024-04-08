@@ -72,4 +72,12 @@ public class AppUser {
   public void setPassword(String password) {
     this.password = password;
   }
+
+  public Set<Role> getRoles() {
+    return roles;
+  }
+
+  public void addRole(Role role) {
+    this.roles.add(role);
+  }
 }
