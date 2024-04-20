@@ -52,4 +52,27 @@ public class RoleServiceImpl implements RoleService {
       throw new NotFoundException("Role not found");
     }
   }
+
+  @Override
+  public Role findRoleByName(String name) throws Exception {
+    Optional<Role> maybeRole = roleRepository.findRoleByName(name);
+    if (maybeRole.isPresent()) {
+      Role role = maybeRole.get();
+      return role;
+    } else {
+      throw new NotFoundException("Role not found");
+    }
+  }
+
+  @Override
+  public ResponseEntity<?> deleteRoleById(Long id) throws Exception {
+    Optional<Role> maybeRole = roleRepository.findById(id);
+    if (maybeRole.isPresent()) {
+      Role role = maybeRole.get();
+      roleRepository.deleteById(role.getId());
+      return ResponseEntity.ok().body("role deleted");
+    } else {
+      throw new NotFoundException("Role not found");
+    }
+  }
 }
