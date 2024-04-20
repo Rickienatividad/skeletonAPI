@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.skeleton.skeleton.models.Role;
+import com.skeleton.skeleton.requestObjects.CreateRoleObj;
 
 @Service
 @Component
@@ -14,7 +15,7 @@ public interface RoleService {
 
   public List<Role> getRoles();
 
-  public ResponseEntity<?> createRole(String roleName);
+  public ResponseEntity<?> createRole(CreateRoleObj createRoleObj);
 
   public Role findRoleById(Long id) throws Exception;
 

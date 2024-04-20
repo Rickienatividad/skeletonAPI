@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import com.skeleton.skeleton.repositories.RoleRepository;
+import com.skeleton.skeleton.requestObjects.CreateRoleObj;
 import com.skeleton.skeleton.configurations.NotFoundException;
 import com.skeleton.skeleton.models.Role;
 import java.util.Optional;
@@ -28,12 +29,12 @@ public class RoleServiceImpl implements RoleService {
   }
 
   @Override
-  public ResponseEntity<?> createRole(String roleName) {
-    boolean nameExists = roleRepository.findRoleByName(roleName).isPresent();
+  public ResponseEntity<?> createRole(final CreateRoleObj roleRequest) {
+    boolean nameExists = roleRepository.findRoleByName(roleRequest.getName()).isPresent();
 
     if (!nameExists) {
       Role newRole = new Role();
-      newRole.setName(roleName);
+      newRole.setName(roleRequest.getName());
 
       roleRepository.saveAndFlush(newRole);
       return ResponseEntity.status(HttpStatus.CREATED).body("Role Created");
